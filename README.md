@@ -36,8 +36,8 @@ KB 와 그 설명은 도구의 인자가 아니라 **환경변수**다. LLM 은 
 {
   "mcpServers": {
     "byeori": {
-      "command": "uv",
-      "args": ["run", "--directory", "apps/mcp", "byeori-mcp"],
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/itworxlabs/byeori-mcp.git", "byeori-mcp"],
       "env": {
         "BYEORI_URL": "<벼리 주소>",
         "BYEORI_API_KEY": "<발급받은 키>",
@@ -56,7 +56,8 @@ KB 와 그 설명은 도구의 인자가 아니라 **환경변수**다. LLM 은 
 
 **키가 든 파일이므로 권한을 600 으로 둔다.**
 
-`--directory` 는 이 저장소 기준의 상대 경로다. 저장소 밖에서 쓰면 절대 경로로 바꾼다.
+**받아 둘 폴더가 필요 없다.** `uvx` 가 그 주소에서 받아 임시 환경에 깔고 띄운다. 소스를 받아 두고
+쓰려면 `"command": "uv"`, `"args": ["run", "--directory", "<받은 폴더>", "byeori-mcp"]` 로 바꾼다.
 
 **키를 명령 인자로 넘기지 않는다** — 같은 PC 의 다른 프로그램이 `ps` 로 본다.
 
